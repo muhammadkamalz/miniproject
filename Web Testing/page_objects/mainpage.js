@@ -5,8 +5,6 @@ class mainpage extends halaman {
         super(driver)
     }
     akunsaya = By.xpath('//div[contains (@class, "flex items-center space-x-4")]/div[2]/button')
-    // akunsaya = By.css('div.flex.items-center.space-x-4 > div:last-child button')
-    akunsaya2 = By.xpath('//div[@id="sticky"]/a[4]')
     formcheck = By.xpath('//form[@id="login_form"]')
     loginwithemail = By.xpath('//div[@class="px-4"]/div/button')
     //open form

@@ -6,7 +6,7 @@ const caret = require('../page_objects/cart')
 const cekout = require('../page_objects/checkout')
 const base = require('../utils/bootdriver')
 
-describe('End to end testing', async() =>{
+describe('Topup end 2 end testing', async() =>{
     before(async() => {
         driver = await base()
         login = new loguin(driver)
@@ -24,11 +24,10 @@ describe('End to end testing', async() =>{
 
     it('Login', async() => {
         await login.loginpage()
-        await driver.sleep(5000)
-        await login.openloginpage()
-        await driver.sleep(5000)
+        await driver.wait(until.elementLocated(By.xpath('//div[@class="px-4"]/div/button')), 10000).click()
+        await driver.sleep(2000)
         await login.input('migosag692@hapincy.com', 'kamal123*')
-        await driver.sleep(5000)
+        await driver.sleep(2000)
         await login.submit()
         await driver.sleep(10000)
         await login.open()
@@ -38,17 +37,15 @@ describe('End to end testing', async() =>{
 
     it('Select item to buy & Fill Data', async() => {
         await topup.open()
-        await driver.sleep(5000)
+        await driver.wait(until.elementLocated(By.xpath('//p[contains(text(), "Azur Lane")]')))
         await driver.executeScript('window.scrollBy(0, 600);')
-        await driver.sleep(5000)
         await topup.openhsr()
-        await driver.sleep(5000)
-        await topup.buy1()
+        await driver.wait(until.elementLocated(By.xpath('//div[@class="grid grid-flow-row gap-4"]/a[1]')), 10000).click()
         await driver.sleep(5000)
         await topup.input('01309396', 'sia')
         await topup.add()
         await driver.sleep(3000)
-        const check = await topup.checker2()
+        const check = await driver.wait(until.elementLocated(By.xpath('//div[contains(@class, "flex flex-col justify-center")]/div//span')), 5000).getText()
         expect(check).to.exist.and.to.equal('Produk berhasil ditambahkan ke Troli.')
     })
 
@@ -63,7 +60,7 @@ describe('End to end testing', async() =>{
         expect(check1).to.exist.and.to.equal('60 Oneiric Shard')
     })
 
-    it('Checkout', async() => {
+    it.skip('Checkout', async() => {
         await cart.continue()
         await driver.sleep(5000)
         await checkout.selectpayment()

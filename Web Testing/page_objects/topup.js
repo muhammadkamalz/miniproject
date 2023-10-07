@@ -38,7 +38,7 @@ class topup extends halaman {
     }
 
     async buy1() {
-        await this.driver.findElement(this.pilihan1).click()
+      return await this.driver.findElement(this.pilihan1)
     }
 
     async input(uidata, serverdata ){

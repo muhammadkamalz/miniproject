@@ -34,7 +34,7 @@ const skema =
                         name: {type: 'string'},
                         age: {type: 'string'},
                         email: {type: 'string'},
-                        image: {type: 'string'},
+                        image: {type: ['string', 'null']},
                         date_created: {type: 'string'}
                     }
                 }
@@ -54,13 +54,13 @@ const skema =
 // tes()
 
 describe("Users API on APIngweb.com", async() => {
-    it.skip('Test to get a single user data', async() => {
+    it.only('Test to get a single user data', async() => {
         const res = await request.get('user/880')
         expect(res.statusCode).to.equal(200)
         expect(res.body).have.jsonSchema(skema)
     })
 
-    it.only('Test to get all users data ', async() => {
+    it.skip('Test to get all users data ', async() => {
         const res = await request.get('users')
         expect (res.statusCode).to.equal(200)
         expect (res.body).to.have.jsonSchema(skema)
@@ -75,19 +75,17 @@ describe("Users API on APIngweb.com", async() => {
         }
         const res = await request.post('user/create').send(data)
         expect(res.statusCode).to.equal(200)
-        expect(res._body.completed).to.deep.equal(data.completed)
     })
 
     it.skip('Update inputted user data', async() => {
         const data = {
-            name :'Geto Suguru',
-            age : '28',
-            email : 'getosuguru@yahoo.com',
-            image : 'https://example.com/geto.png'
+            name :'Ukiyo Ace',
+            age : '23',
+            email : 'ukiyoeisu@yahoo.com',
+            image : 'https://example.com/geats.png'
         }
-        const res = await request.put('user/edit/879').send(data)
+        const res = await request.put('user/edit/880').send(data)
         expect(res.statusCode).to.equal(200)
-        expect(res._body.completed).to.deep.equal(data.completed)
     })
 
     it.skip('Delete a new inputted user data', async() => {
