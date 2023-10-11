@@ -2,9 +2,9 @@
   "name": "api-testing",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".mocharc.js",
   "scripts": {
-    "test": "Mocha --no-timeouts APICredentials.test.js"
+    "test": "mocha --no-timeouts APICredentials.test.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,8 @@
     "chai-json-schema": "^1.5.1",
     "mocha": "^10.2.0",
     "supertest": "^6.3.3"
+  },
+  "devDependencies": {
+    "@reportportal/agent-js-mocha": "^5.0.3"
   }
 }

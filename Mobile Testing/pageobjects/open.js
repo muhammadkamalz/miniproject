@@ -7,15 +7,10 @@ class open {
 
     get skipbutton() {return driver.$('//*[@text="Lewati"]')}
     get tvcity() {return driver.$('id=id.tix.android:id/tv_header_title')}
-    get allow1() {return driver.$('//*[@text="WHILE USING THE APP"]')}
     get title() {return driver.$('id=id.tix.android:id/toolbar_title')}
     
     async skip(){
         await this.skipbutton.click()
-    }
-
-    async allow() {
-        await this.allow1.click()
     }
 
     async checker1() {

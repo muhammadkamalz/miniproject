@@ -12,11 +12,24 @@ class mainpage extends halaman {
     mail = By.xpath('//div[@class="ds-relative ds-w-full"]//input[@type="text"]')
     pw = By.xpath('//div[@class="ds-relative ds-w-full"]//input[@type="password"]')
     confirm = By.xpath('//button[@type="submit"]/button')
-    checkiflogin = By.xpath('//button[@class="flex"]/div/p')
+    //input
 
+    checkiflogin = By.xpath('//button[@class="flex"]/div/p')
+    emailerr = By.xpath('//form/div[1]/div/p[2]')
+    passworderr = By.xpath('//form/div[2]/div/p[2]')
+    //checker
+
+    //profile
+    profil = By.xpath('//div[contains(@class, "flex items-center justify-between pt-3")]/div[4]/button')
+    ceklogout = By.xpath('//div[contains(text(), "Login dengan Email")]')
+    bluebutton = By.id('check-icon')
 
     async open() {
         await this.buka()
+    }
+
+    async bukahalamanlogin() {
+        await this.buka('/login/email')
     }
 
     async loginpage() {
@@ -35,13 +48,33 @@ class mainpage extends halaman {
         await this.driver.findElement(this.pw).sendKeys(password)
     }
 
+    async buttonbiru() {
+        await this.driver.findElement(this.bluebutton).click()
+    }
     async submit() {
         await this.driver.findElement(this.confirm).click()
+    }
+
+    async bukaprofil() {
+        await this.driver.findElement(this.profil).click()
     }
 
     async check1() {
         return await this.driver.findElement(this.checkiflogin).getText()
     }
+
+    async check2() {
+        return await this.driver.findElement(this.ceklogout).getText()
+    }
+    async errmsgmail() {
+        return await this.driver.findElement(this.emailerr).getText()
+    }
+
+    async errmsgpass () {
+        return await this.driver.findElement(this.passworderr).getText()
+    }
+
+    //rc-imageselect-payload
 }
 
 module.exports = mainpage

@@ -19,10 +19,10 @@ class topup extends halaman {
     //data for buying
 
     tambahketroli = By.xpath('//div[@class="space-y-5 py-4"]/div[4]/div[2]/div[1]')
-    belilangsung = By.xpath('//div[@class="space-y-5 py-4"]/div[4]/div[2]/div[2]')
     increase = By.xpath('//div[@class="space-y-5 py-4"]/div[2]/div//button[@aria-label="Increase Quantity"]')
     decrease = By.xpath('//div[@class="space-y-5 py-4"]/div[2]/div//button[@aria-label="Decrease Quantity"]')
-    //buyin
+    //buying
+
 
     checkitem = By.xpath('//div[@class="w-full space-y-4"]/div/div/div/h1')
     checkifadded = By.xpath('//div[contains(@class, "flex flex-col justify-center")]/div//span')
@@ -41,7 +41,13 @@ class topup extends halaman {
       return await this.driver.findElement(this.pilihan1)
     }
 
+    async clearinput(){
+        await this.driver.findElement(this.uid).sendKeys(Keys.DELETE)
+        await this.driver.findElement(this.server).sendKeys(Keys.DELETE)
+    }
     async input(uidata, serverdata ){
+        await this.driver.findElement(this.uid).clear()
+        await this.driver.findElement(this.server).clear()
         await this.driver.findElement(this.uid).sendKeys(uidata)
         await this.driver.findElement(this.server).sendKeys(serverdata)
     }

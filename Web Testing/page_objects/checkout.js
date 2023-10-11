@@ -15,7 +15,12 @@ class checkout extends halaman {
     checkuid = By.xpath('//div[@class="flex flex-col gap-1 w-1/4"][1]/p')
     checkserver = By.xpath('//div[@class="flex flex-col gap-1 w-1/4"][2]/p')
     checkmetode = By.xpath('//p[contains(text(), "DANA Linkage")]')
+    checkkembali = By.xpath('//div[contains(@data-test,"promo-carousel")]')
+    checktombolbayar = By.xpath('//button//span[contains(text(), "Bayar")]')
     //checking purpose
+
+    logoitemku = By.xpath('//img[contains(@alt, "logo-itemku")]')
+    //kembali kehalaman utama
 
     async selectpayment() {
         await this.driver.findElement(this.metodepembayaran).click()
@@ -27,6 +32,10 @@ class checkout extends halaman {
 
     async confirmpayment() {
         await this.driver.findElement(this.confirmmetode).click()
+    }
+
+    async batalkan() {
+        await this.driver.findElement(this.logoitemku).click()
     }
 
     async checker1(){
@@ -43,6 +52,14 @@ class checkout extends halaman {
 
     async checker4() {
         return await this.driver.findElement(this.checkmetode).getText()
+    }
+
+    async checker5() {
+        return await this.driver.findElement(this.checkkembali).isDisplayed()
+    }
+
+    async checker6() {
+        return await this.driver.findElement(this.checktombolbayar).isEnabled()
     }
 
 

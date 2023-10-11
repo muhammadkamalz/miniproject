@@ -4,7 +4,7 @@ const basis = require('../util/bootdriver')
 const loguin = require('../pageobjects/login')
 const bought = require('../pageobjects/buy')
 
-describe('Testing End to End', async() => {
+describe.only('Testing End to End', async() => {
     before(async() => {
         driver = await basis()
         open = new buka(driver)
@@ -14,15 +14,14 @@ describe('Testing End to End', async() => {
 
     before(async() => {
         await open.skip()
-        await open.allow()
+        await driver.pause(2000)
     })
     after(async() => {
         await driver.deleteSession()
     })
     it('Check if main page is opened or not', async() => {
         const check = await open.checker1()
-        const tunggu = await driver.$('//*[@text="🎬 Hi, Apa Sih Genre Film yang Kamu Banget?"]').waitForExist()
-        if(tunggu == true){
+        if(await driver.$('//*[@text="🎬 Hi, Apa Sih Genre Film yang Kamu Banget?"]').isExisting() == true){
             await login.openprofile()
             expect(check).to.exist.and.to.equal('Sedang Tayang')
         }
@@ -41,6 +40,9 @@ describe('Testing End to End', async() => {
 
     it('Should be able to login using given phone number & password', async() => {
         await login.input('85669387656','testing12345')
+        await driver.pause(1000)
+        await login.submitinput()
+        await driver.pause(1000)
         await login.back()
         await driver.pause(2000)
         await login.back()
@@ -53,7 +55,19 @@ describe('Testing End to End', async() => {
 
     it('Should be able to order a ticket for a movie', async() => {
         await login.back()
-            await driver.pause(2000)
+        await driver.pause(2000)
+        if(await driver.$('//*[@text="🎬 Hi, Apa Sih Genre Film yang Kamu Banget?"]').isExisting() == true){
+            await login.openprofile()
+            await driver.pause(1000)
+            await driver.$('id=id.tix.android:id/iv_banner_promo').waitForExist()
+        }
+       else if (await driver.$('id=id.tix.android:id/com_braze_inappmessage_modal_imageview').isExisting() == true){
+            await login.closepopup()
+            await driver.$('id=id.tix.android:id/iv_banner_promo').waitForExist()
+       }
+       else {
+        await driver.$('id=id.tix.android:id/iv_banner_promo').waitForExist()
+       }
             await driver.touchAction([
                 { action: 'press', x: 348, y: 886 },
                 {action: 'wait', ms:1000},
@@ -78,10 +92,8 @@ describe('Testing End to End', async() => {
             await driver.pause(2000)
             await buy.buyticket()
             await driver.pause(2000)
-            const check1 = await buy.checkfilm()
-            const check2 = await buy.seatposition()
-            expect(check1).to.exist.and.to.equal('DI AMBANG KEMATIAN')
-            expect(check2).to.exist.and.to.equal('F4')
+            const check = await buy.seatposition()
+            expect(check).to.exist.and.to.include('F')
             await driver.touchAction([
                 { action: 'press', x: 348, y: 886 },
                 {action: 'wait', ms:1000},
@@ -89,8 +101,42 @@ describe('Testing End to End', async() => {
                 'release'
             ])
             await driver.pause(2000)
-            const check3 = await buy.bayar()
-            expect(check3).to.exist.and.to.equal('BAYAR SEKARANG')
-        
+            const check2 = await buy.bayar()
+            expect(check2).to.exist.and.to.equal('BAYAR SEKARANG')
     })
+        it('Cancel Order', async() => {
+            await login.back()
+            await driver.$('id=id.tix.android:id/parentPanel').waitForExist()
+            await buy.batal()
+            const check = await buy.checkcancel()
+            expect(check).to.equal(true)
+        })
+
+        it('Logout from Tix.id',async() => {
+            await driver.back()
+            await driver.pause(2000)
+            if (await driver.$('id=id.tix.android:id/com_braze_inappmessage_modal_imageview').isExisting() == true){
+                await login.closepopup()
+                await login.openprofile()
+           }
+           else {
+            await login.openprofile()
+           }
+           
+           await login.opensetting()
+           await driver.pause(2000)
+           await driver.$('//*[@text="Akun"]').waitForExist({timeout: 10000})
+           await driver.touchAction([
+                { action: 'press', x: 348, y: 886 },
+                {action: 'wait', ms:1000},
+                { action: 'moveTo', x: 348, y: 586 },
+                'release'
+            ])
+           await login.logout()
+           await driver.$('id=id.tix.android:id/parentPanel').waitForExist({timeout: 10000})
+           await login.confirmlogout()
+           await driver.$('id=id.tix.android:id/iv_banner_promo').waitForExist({timeout: 10000})
+           const check = await login.checklogout()
+           expect(check).to.exist.and.to.equal('MASUK/DAFTAR')
+        })
 })

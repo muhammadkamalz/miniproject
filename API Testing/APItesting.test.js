@@ -54,19 +54,19 @@ const skema =
 // tes()
 
 describe("Users API on APIngweb.com", async() => {
-    it.only('Test to get a single user data', async() => {
+    it('Test to get a single user data', async() => {
         const res = await request.get('user/880')
         expect(res.statusCode).to.equal(200)
         expect(res.body).have.jsonSchema(skema)
     })
 
-    it.skip('Test to get all users data ', async() => {
+    it('Test to get all users data ', async() => {
         const res = await request.get('users')
         expect (res.statusCode).to.equal(200)
         expect (res.body).to.have.jsonSchema(skema)
     })
 
-    it.skip('Test to input a new user data', async() => {
+    it('Test to input a new user data', async() => {
         const data = {
             name : 'Gojo Satoru',
             age : '27',
@@ -77,19 +77,19 @@ describe("Users API on APIngweb.com", async() => {
         expect(res.statusCode).to.equal(200)
     })
 
-    it.skip('Update inputted user data', async() => {
+    it('Update inputted user data', async() => {
         const data = {
             name :'Ukiyo Ace',
             age : '23',
             email : 'ukiyoeisu@yahoo.com',
             image : 'https://example.com/geats.png'
         }
-        const res = await request.put('user/edit/880').send(data)
+        const res = await request.put('user/edit/892').send(data)
         expect(res.statusCode).to.equal(200)
     })
 
-    it.skip('Delete a new inputted user data', async() => {
-        const res = await request.delete('user/delete/881')
+    it('Delete a new inputted user data', async() => {
+        const res = await request.delete('user/delete/892')
         expect(res.statusCode).to.equal(200)
     })
 }) 

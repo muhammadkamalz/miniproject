@@ -12,13 +12,17 @@ class login {
     
     get infohp() {return driver.$('id=id.tix.android:id/tv_account_phone_no')}
     get profilebutton() {return driver.$('id=id.tix.android:id/iv_account')}
-    get mainshowcase() {return driver.$('//*[@resource-id="id.tix.android:id/ev_topup_dana"]')}
     get tombolkembali() {return driver.$('~Kembali ke atas')}
-    get closepopup1() {return driver.$('~untuk menutup')}
+    get popupalert() {return driver.$('~untuk menutup')}
+
+    get tombolseting() {return driver.$('id=id.tix.android:id/iv_settings_account')}
+    get tombolkeluar() {return driver.$('//*[@text="Keluar"]')}
+    get acceptkeluar() {return driver.$('id=android:id/button1')}
+    //logout test
 
 
-    async closepopup11(){
-        await this.closepopup1.click()
+    async closepopup(){
+        await this.popupalert.click()
     }
 
     async openloginpage(){
@@ -32,6 +36,9 @@ class login {
     async input(hp, password) {
         await this.nohp.setValue(hp)
         await this.pw.setValue(password)
+    }
+
+    async submitinput(){
         await this.submit.click()
     }
 
@@ -39,8 +46,16 @@ class login {
         await this.profilebutton.click()
     }
 
-    async openshowcase() {
-        await this.mainshowcase.click()
+    async opensetting() {
+        await this.tombolseting.click()
+    }
+
+    async logout() {
+        await this.tombolkeluar.click()
+    }
+
+    async confirmlogout() {
+        await this.acceptkeluar.click()
     }
 
     async back() {
@@ -51,10 +66,18 @@ class login {
         return await this.errormsg.getText()
     }
 
+
     async checklogin() {
         return await this.infohp.getText()
     }
 
+    async checksubmit() {
+        return await this.submit.isEnabled()
+    }
+
+    async checklogout() {
+        return await this.buttonlogin.getText()
+    }
 }
 
 module.exports = login

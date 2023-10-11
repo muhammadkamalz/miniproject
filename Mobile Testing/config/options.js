@@ -12,6 +12,7 @@ const options = {
         'appium:deviceName' : 'HP Galaxy',
         'appium:automationName' : 'UiAutomator2',
         'appium:app' :  path.join(process.cwd(), 'apk/tixid.apk'),
+        "appium:autoGrantPermissions" : "true",
         // 'appium:appActivity': 'id.tix.android.home.view.HomeNavigationActivity',
         // 'appium:noReset' : 'true',
         // 'appium:fullReset' : 'false'
