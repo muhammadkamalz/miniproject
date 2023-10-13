@@ -14,9 +14,11 @@ describe('Topup end 2 end testing', async() =>{
         cart = new caret(driver)
         checkout = new cekout(driver)
         await login.open()
+        await driver.sleep(2000)
+        await driver.wait(until.elementLocated(By.id('check-icon')),10000).click()
     })
     beforeEach(async() => {
-        await driver.sleep(5000)
+        await driver.sleep(3000)
     })
     after(async() => {
         await driver.close()
@@ -75,9 +77,9 @@ describe('Topup end 2 end testing', async() =>{
         const check3 = await checkout.checker3()
         const check4 = await checkout.checker4()
         const check6 = await checkout.checker6()
-        expect(check2).to.exist.and.to.equal('801309396')
-        expect(check3).to.exist.and.to.equal('Asia')
-        expect(check4).to.exist.and.to.equal('DANA Linkage')
+        expect(check2).to.equal('801309396')
+        expect(check3).to.equal('Asia')
+        expect(check4).to.equal('DANA Linkage')
         expect(check6).to.equal(true)
     })
 
@@ -95,8 +97,8 @@ describe('Topup end 2 end testing', async() =>{
         await driver.sleep(2000)
         await driver.wait(until.elementLocated(By.xpath('//div[contains(text(), "Hapus")]')), 10000).click()
         await driver.wait(until.elementLocated(By.xpath('//div[contains(@class, "flex pt-8")]/button[2]')),10000).click()
-        await driver.sleep(2000)
-        const check = await cart.check2()
+        await driver.wait(until.elementLocated(By.xpath('//div[contains(@class,"w-full text-center text-xl")]')),10000)
+        const check = await cart.check4()
         expect(check).to.equal('Wah, troli kamu kosong')
     })
 
@@ -108,7 +110,7 @@ describe('Topup end 2 end testing', async() =>{
         await driver.wait(until.elementLocated(By.xpath('//div[contains(text(), "Log Out")]/parent::*/parent::*')),10000).click()
         await driver.sleep(1000)
         const check = await login.check2()
-        expect(check).to.exist.and.to.equal('Login Dengan Email')
+        expect(check).to.equal('Login Dengan Email')
     })
 })  
 

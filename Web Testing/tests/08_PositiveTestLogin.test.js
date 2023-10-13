@@ -3,7 +3,7 @@ const{By, until} = require('selenium-webdriver')
 const loguin = require('../page_objects/login')
 const base = require('../utils/bootdriver')
 
-describe('Positive Test for Login Process',async() => {
+describe('Positive Test Halaman Login',async() => {
     before(async() => {
         driver = await base()
         login = new loguin(driver)
@@ -24,7 +24,7 @@ describe('Positive Test for Login Process',async() => {
         await driver.sleep(10000)
         await login.open()
         const check = await login.check1()
-        expect(check).to.exist.and.to.equal('kemal')
+        expect(check).to.equal('kemal')
     })
 
     it('Logout', async() => {
@@ -35,7 +35,7 @@ describe('Positive Test for Login Process',async() => {
         await driver.wait(until.elementLocated(By.xpath('//div[contains(text(), "Log Out")]/parent::*/parent::*')),10000).click()
         await driver.sleep(1000)
         const check = await login.check2()
-        expect(check).to.exist.and.to.equal('Login Dengan Email')
+        expect(check).to.equal('Login Dengan Email')
     })
 
 })

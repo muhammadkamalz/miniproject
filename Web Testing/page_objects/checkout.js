@@ -11,7 +11,7 @@ class checkout extends halaman {
     confirmmetode = By.xpath('//div[@class="ds-flex ds-flex-row-reverse"]/span[contains(text(), "Pilih Metode Pembayaran")]')
     //select payment method
 
-    checkitem = By.xpath('//div[@class="flex"][1]/div//h2')
+    checkitem = By.xpath('//h2[contains(@class, "ds-text-lg")]')
     checkuid = By.xpath('//div[@class="flex flex-col gap-1 w-1/4"][1]/p')
     checkserver = By.xpath('//div[@class="flex flex-col gap-1 w-1/4"][2]/p')
     checkmetode = By.xpath('//p[contains(text(), "DANA Linkage")]')

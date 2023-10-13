@@ -9,6 +9,7 @@ class login {
     get pw() {return driver.$('id=id.tix.android:id/edt_password')}
     get submit() {return driver.$('id=id.tix.android:id/btn_login')}
     get errormsg() {return driver.$('id=id.tix.android:id/tv_message')}
+    get labelformlogin() {return driver.$('id=id.tix.android:id/toolbar_title')}
     
     get infohp() {return driver.$('id=id.tix.android:id/tv_account_phone_no')}
     get profilebutton() {return driver.$('id=id.tix.android:id/iv_account')}
@@ -18,9 +19,13 @@ class login {
     get tombolseting() {return driver.$('id=id.tix.android:id/iv_settings_account')}
     get tombolkeluar() {return driver.$('//*[@text="Keluar"]')}
     get acceptkeluar() {return driver.$('id=android:id/button1')}
+    get tombolok() {return driver.$('id=id.tix.android:id/btn_ok')}
     //logout test
 
 
+    async closerrmsg() {
+        await this.tombolok.click()
+    }
     async closepopup(){
         await this.popupalert.click()
     }
@@ -29,6 +34,9 @@ class login {
         await this.buttonlogin.click()
     }
 
+    async getlabelform() {
+        return await this.labelformlogin.getText()
+    }
     async getlabelhp() {
         return await this.labelhp.getText()
     }

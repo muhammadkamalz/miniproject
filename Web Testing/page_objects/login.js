@@ -24,6 +24,9 @@ class mainpage extends halaman {
     ceklogout = By.xpath('//div[contains(text(), "Login dengan Email")]')
     bluebutton = By.id('check-icon')
 
+    async openemail() {
+        await this.bukaemail()
+    }
     async open() {
         await this.buka()
     }

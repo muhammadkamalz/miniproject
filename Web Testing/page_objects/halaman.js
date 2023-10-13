@@ -9,6 +9,7 @@ class halaman {
         this.driver.get('https://itemku.com' + path)
     }
 
+
 }
 
 module.exports = halaman

@@ -33,7 +33,7 @@ describe('Sorting Test', async() => {
         await sort.sPopuler()
         await driver.sleep(3000)
         const check = await sort.checkpopuler()
-        expect(check).to.exist.and.to.equal('Blessing of the Welkin Moon')
+        expect(check).to.equal('Blessing of the Welkin Moon')
     })
 
     it('Sort harga termurah', async() => {
@@ -48,7 +48,7 @@ describe('Sorting Test', async() => {
     it('Sort harga termahal', async() => {
         await sort.sTermahal()
         await driver.sleep(3000)
-        await driver.executeScript('window.scrollBy(0, 800);')
+        await driver.executeScript('window.scrollBy(0, 900);')
         await driver.sleep(2000)
         const hrg1 = await sort.harga9()
         const hrg2 = await sort.harga10()
@@ -64,14 +64,15 @@ describe('Sorting Test', async() => {
         await driver.sleep(2000)
         await sort.sTermurah()
         await driver.sleep(3000)
-        const hrg1 = await sort.harga1()
-        const hrg2 = await sort.harga2()
+        await driver.executeScript('window.scrollBy(0, 900);')
+        const hrg1 = await sort.harga3()
+        const hrg2 = await sort.harga1()
         const check = hrg1 < hrg2
         expect(check).to.equal(true)
         const check2 = await sort.garansi1()
         const check3 = await sort.garansi2()
-        expect(check2).to.exist.and.to.equal('10 Menit Kirim')
-        expect(check3).to.exist.and.to.equal('10 Menit Kirim')
+        expect(check2).to.equal('10 Menit Kirim')
+        expect(check3).to.equal('10 Menit Kirim')
     })
 
 })

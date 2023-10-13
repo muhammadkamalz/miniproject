@@ -12,7 +12,9 @@ class cart extends halaman {
     //buka cart
 
     cartdata1 = By.xpath('//div[@class="space-y-6"]/div/div[@class="w-full"]') //to check if an item is added or not
-    cartdata2 = By.xpath('//div[contains(@class,"w-full text-center text-xl")]') //to check if an item is in cart or not
+    cartdata2 = By.xpath('//div[2][contains(@class,"space-y-2 flex ")]/p')
+    cartdata3 = By.xpath('//input[contains(@aria-label,"Quantity")]')
+    cartdata4 = By.xpath('//div[contains(@class,"w-full text-center text-xl")]') //to check if an item is in cart or not
     //forcheckingpurpose
 
     confirm = By.xpath('//div[@class="relative w-4/12"]//button')
@@ -32,6 +34,14 @@ class cart extends halaman {
 
     async check2() {
         return await this.driver.findElement(this.cartdata2).getText()
+    }
+
+    async check3() {
+        return await this.driver.findElement(this.cartdata3).getAttribute('value')
+    }
+
+    async check4() {
+        return await this.driver.findElement(this.cartdata4).getText()
     }
 
     async continue () {

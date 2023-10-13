@@ -3,10 +3,10 @@ import {Trend, Counter} from 'k6/metrics'
 import {sleep, check, group} from 'k6'
 import {headers} from '../headers.js'
 
-import loginchunks from '../data_test_login/loginchunks.js'
-import fontlist from '../data_test_login/fontcheck.js'
-import gambar from '../data_test_login/image.js'
-import statics from '../data_test_login/statics.js'
+import loginchunks from '../protocol_data/loginchunks.js'
+import fontlist from '../protocol_data/fontcheck.js'
+import gambar from '../protocol_data/image.js'
+import statics from '../protocol_data/statics.js'
 
 const durasi = new Trend('login_email_page_duration', true)
 

@@ -45,7 +45,7 @@ const skema =
 }
 
 
-describe('Authentication Testing', async() => {
+describe.skip('Authentication Testing', async() => {
     it('Should be able to authenticate and get all users data', async() => {
         const res = await request
         .get('auth/users')

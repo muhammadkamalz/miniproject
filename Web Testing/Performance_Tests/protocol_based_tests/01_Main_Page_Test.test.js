@@ -3,10 +3,10 @@ import {Trend} from 'k6/metrics'
 import {sleep, check, group} from 'k6'
 import {headers} from '../headers.js'
 
-import mainchunks from '../data_test_login/mainchunks.js'
-import fontlist from '../data_test_login/fontcheck.js'
-import mainimage from '../data_test_login/mainpageimage.js'
-import statics from '../data_test_login/statics.js'
+import mainchunks from '../protocol_data/mainchunks.js'
+import fontlist from '../protocol_data/fontcheck.js'
+import mainimage from '../protocol_data/mainpageimage.js'
+import statics from '../protocol_data/statics.js'
 
 const durasi = new Trend('main_page_duration', true)
 

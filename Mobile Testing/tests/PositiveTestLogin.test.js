@@ -11,6 +11,7 @@ describe('Menguji Fungsi logout tix.id', async() => {
     })
 
     before(async() => {
+        await driver.$('//*[@text="Lewati"]').waitForExist({timeout:15000})
         await open.skip()
         await driver.pause(2000)
         if(await driver.$('//*[@text="🎬 Hi, Apa Sih Genre Film yang Kamu Banget?"]').isExisting() == true){
@@ -32,7 +33,7 @@ describe('Menguji Fungsi logout tix.id', async() => {
        await login.input('85669387656','testing12345')
        await driver.pause(1000)
        await login.submitinput()
-       await driver.pause(1000)
+       await driver.pause(2000)
        await login.back()
        await driver.pause(2000)
        await login.back()

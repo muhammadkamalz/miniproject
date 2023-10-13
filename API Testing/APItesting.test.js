@@ -56,12 +56,20 @@ const skema =
 describe("Users API on APIngweb.com", async() => {
     it('Test to get a single user data', async() => {
         const res = await request.get('user/880')
+        console.log(res.body)
         expect(res.statusCode).to.equal(200)
         expect(res.body).have.jsonSchema(skema)
     })
 
+    it.only('Negative Test to get a single data', async() => {
+        const res = await request.get('use')
+        expect(res.statusCode).to.equal(404)
+        expect(res.body).to.not.have.jsonSchema(skema)
+    })
+
     it('Test to get all users data ', async() => {
         const res = await request.get('users')
+        console.log(res.body)
         expect (res.statusCode).to.equal(200)
         expect (res.body).to.have.jsonSchema(skema)
     })
@@ -77,6 +85,8 @@ describe("Users API on APIngweb.com", async() => {
         expect(res.statusCode).to.equal(200)
     })
 
+    
+
     it('Update inputted user data', async() => {
         const data = {
             name :'Ukiyo Ace',
@@ -84,12 +94,12 @@ describe("Users API on APIngweb.com", async() => {
             email : 'ukiyoeisu@yahoo.com',
             image : 'https://example.com/geats.png'
         }
-        const res = await request.put('user/edit/892').send(data)
+        const res = await request.put('user/edit/916').send(data)
         expect(res.statusCode).to.equal(200)
     })
 
     it('Delete a new inputted user data', async() => {
-        const res = await request.delete('user/delete/892')
+        const res = await request.delete('user/delete/917')
         expect(res.statusCode).to.equal(200)
     })
 }) 

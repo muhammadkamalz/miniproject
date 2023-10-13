@@ -14,6 +14,8 @@ describe('Buy Akun end 2 end testing', async() =>{
         cart = new caret(driver)
         checkout = new cekout(driver)
         await login.open()
+        await driver.sleep(2000)
+        await driver.wait(until.elementLocated(By.id('check-icon')),10000).click()
     })
     beforeEach(async() => {
         await driver.sleep(5000)
@@ -33,6 +35,7 @@ describe('Buy Akun end 2 end testing', async() =>{
         await login.open()
         const check = await login.check1()
         expect(check).to.exist.and.to.equal('kemal')
+        //benerin validasinya
     })
 
     it('Select an account to buy & put into cart', async() => {
@@ -54,7 +57,7 @@ describe('Buy Akun end 2 end testing', async() =>{
         await cart.opencart()
         await driver.sleep(2000)
         const check1 = await cart.check1()
-        expect(check1).to.exist.and.to.equal(true)
+        expect(check1).to.equal(true)
     })
 
     it('Checkout', async() => {
@@ -69,7 +72,7 @@ describe('Buy Akun end 2 end testing', async() =>{
         await driver.sleep(3000)
         const check = await checkout.checker4()
         const check2 = await checkout.checker6()
-        expect(check).to.exist.and.to.equal('DANA Linkage')
+        expect(check).to.equal('DANA Linkage')
         expect(check2).to.equal(true)
     })
 
@@ -87,8 +90,8 @@ describe('Buy Akun end 2 end testing', async() =>{
         await driver.sleep(2000)
         await driver.wait(until.elementLocated(By.xpath('//div[contains(text(), "Hapus")]')), 10000).click()
         await driver.wait(until.elementLocated(By.xpath('//div[contains(@class, "flex pt-8")]/button[2]')),10000).click()
-        await driver.sleep(2000)
-        const check = await cart.check2()
+        await driver.wait(until.elementLocated(By.xpath('//div[contains(@class,"w-full text-center text-xl")]')),10000)
+        const check = await cart.check4()
         expect(check).to.equal('Wah, troli kamu kosong')
     })
 
@@ -100,7 +103,7 @@ describe('Buy Akun end 2 end testing', async() =>{
         await driver.wait(until.elementLocated(By.xpath('//div[contains(text(), "Log Out")]/parent::*/parent::*')),10000).click()
         await driver.sleep(1000)
         const check = await login.check2()
-        expect(check).to.exist.and.to.equal('Login Dengan Email')
+        expect(check).to.equal('Login Dengan Email')
     })
 })  
 

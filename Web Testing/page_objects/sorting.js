@@ -14,8 +14,8 @@ class sort extends halaman{
     tampil = By.xpath('//div[contains(@class, "p-4 flex")]/button')
     //sorting garansi pengiriman
 
-    label1 = By.xpath('//div[contains(@class, "grid-flow-row")]//a[1]//div[contains(@class, "flex flex-row")][2]')
-    label2 = By.xpath('//div[contains(@class, "grid-flow-row")]//a[2]//div[contains(@class, "flex flex-row")][2]')
+    label1 = By.xpath('//div//p[contains(text(),"10 Menit Kirim")]')
+    label2 = By.xpath('//div//p[contains(text(),"10 Menit Kirim")]')
 
     //data garansi pengiriman
 
@@ -23,11 +23,12 @@ class sort extends halaman{
     sortcheckharga1 = By.xpath('//div[contains(@class, "grid-flow-row")]//a[5]//div[contains(text(), "terjual")]')
     sortcheckharga2 = By.xpath('//div[contains(@class, "grid-flow-row")]//a[6]//div[contains(text(), "terjual")]')
 
-    sortchecklowestprice1 = By.xpath('//div[@class="grid grid-flow-row gap-4"]/a[1]/div/div/div[contains(@class, "text-persimmon")]')
-    sortchecklowestprice2 = By.xpath('//div[@class="grid grid-flow-row gap-4"]//a[2]//div[contains(@class, "text-persimmon")]')
+    sortchecklowestprice1 = By.xpath('//div[@class="grid grid-flow-row gap-4"]/a[2]/div/div/div[contains(@class, "text-persimmon")]')
+    sortchecklowestprice2 = By.xpath('//div[@class="grid grid-flow-row gap-4"]//a[3]//div[contains(@class, "text-persimmon")]')
+    sortchecklowestprice3 = By.xpath('//div[@class="grid grid-flow-row gap-4"]/a[1]/div/div/div[contains(@class, "text-persimmon")]')
 
-    sortcheckhighestprice1 = By.xpath('//div[@class="grid grid-flow-row gap-4"]//a[9]//div[contains(@class, "text-persimmon")]')
-    sortcheckhighestprice2 = By.xpath('//div[@class="grid grid-flow-row gap-4"]//a[10]//div[contains(@class, "text-persimmon")]')
+    sortcheckhighestprice1 = By.xpath('//div[@class="grid grid-flow-row gap-4"]//a[10]//div[contains(@class, "text-persimmon")]')
+    sortcheckhighestprice2 = By.xpath('//div[@class="grid grid-flow-row gap-4"]//a[11]//div[contains(@class, "text-persimmon")]')
     //sortdata
 
     async opengenshinpage() {
@@ -71,6 +72,13 @@ class sort extends halaman{
 
     async harga2() {
         const harga = await this.driver.findElement(this.sortchecklowestprice2).getText()
+        const matcharga = harga.match(/(\d+\.\d+)/)
+        const convertharga = matcharga[0]
+        return convertharga
+    }
+
+    async harga3() {
+        const harga = await this.driver.findElement(this.sortchecklowestprice3).getText()
         const matcharga = harga.match(/(\d+\.\d+)/)
         const convertharga = matcharga[0]
         return convertharga

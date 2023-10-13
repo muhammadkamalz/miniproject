@@ -33,7 +33,7 @@ describe('E2E Test to fast buy something ', async() =>{
         await login.open()
         await driver.sleep(2000)
         const check = await driver.wait(until.elementLocated(By.xpath('//button[@class="flex"]/div/p')), 10000).getText()
-        expect(check).to.exist.and.to.equal('kemal')
+        expect(check).to.equal('kemal')
     })
 
     it('Select a game to instantly buy a product related to the game', async() => {
@@ -57,7 +57,7 @@ describe('E2E Test to fast buy something ', async() =>{
         await driver.sleep(3000)
         const check = await checkout.checker4()
         const check2 = await checkout.checker6()
-        expect(check).to.exist.and.to.equal('DANA Linkage')
+        expect(check).to.equal('DANA Linkage')
         expect(check2).to.equal(true)
     })
 
@@ -77,7 +77,8 @@ describe('E2E Test to fast buy something ', async() =>{
         await driver.wait(until.elementLocated(By.xpath('//div[contains(text(), "Log Out")]/parent::*/parent::*')),10000).click()
         await driver.sleep(1000)
         const check = await login.check2()
-        expect(check).to.exist.and.to.equal('Login Dengan Email')
+        expect(check).to.equal('Login Dengan Email')
+        // benerin assertion
     })
 })  
 

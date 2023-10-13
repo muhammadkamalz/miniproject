@@ -1,5 +1,3 @@
-const{remote} = require('webdriverio')
-
 class open {
     constructor(driver) {
         this.driver = driver

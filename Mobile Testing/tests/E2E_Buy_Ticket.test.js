@@ -4,7 +4,7 @@ const basis = require('../util/bootdriver')
 const loguin = require('../pageobjects/login')
 const bought = require('../pageobjects/buy')
 
-describe.only('Testing End to End', async() => {
+describe('Testing End to End', async() => {
     before(async() => {
         driver = await basis()
         open = new buka(driver)
@@ -13,13 +13,14 @@ describe.only('Testing End to End', async() => {
     })
 
     before(async() => {
+        await driver.$('//*[@text="Lewati"]').waitForExist({timeout:15000})
         await open.skip()
         await driver.pause(2000)
     })
     after(async() => {
         await driver.deleteSession()
     })
-    it('Check if main page is opened or not', async() => {
+    it('Check apakah halaman utama dapat terbuka', async() => {
         const check = await open.checker1()
         if(await driver.$('//*[@text="🎬 Hi, Apa Sih Genre Film yang Kamu Banget?"]').isExisting() == true){
             await login.openprofile()
@@ -30,7 +31,7 @@ describe.only('Testing End to End', async() => {
        }
     })
 
-    it('Check if login page can be opened', async() => {
+    it('Check apakah halaman login dapat terbuka', async() => {
         await login.openloginpage()
         const tunggu = await driver.$('id=id.tix.android:id/tv_label')
         const check = await login.getlabelhp()
@@ -38,7 +39,7 @@ describe.only('Testing End to End', async() => {
         expect(check).to.exist.and.to.equal('NOMOR HANDPHONE')
     })
 
-    it('Should be able to login using given phone number & password', async() => {
+    it('Dapat login menggunakan nomor handphone & password', async() => {
         await login.input('85669387656','testing12345')
         await driver.pause(1000)
         await login.submitinput()
@@ -53,7 +54,7 @@ describe.only('Testing End to End', async() => {
 
     })
 
-    it('Should be able to order a ticket for a movie', async() => {
+    it('Dapat membeli tiket', async() => {
         await login.back()
         await driver.pause(2000)
         if(await driver.$('//*[@text="🎬 Hi, Apa Sih Genre Film yang Kamu Banget?"]').isExisting() == true){
@@ -72,6 +73,12 @@ describe.only('Testing End to End', async() => {
                 { action: 'press', x: 348, y: 886 },
                 {action: 'wait', ms:1000},
                 { action: 'moveTo', x: 348, y: 406 },
+                'release'
+            ])
+            await driver.touchAction([
+                { action: 'press', x: 628, y: 628 },
+                {action: 'wait', ms:1000},
+                { action: 'moveTo', x: 333, y: 628 },
                 'release'
             ])
             await buy.beli()
@@ -108,11 +115,12 @@ describe.only('Testing End to End', async() => {
             await login.back()
             await driver.$('id=id.tix.android:id/parentPanel').waitForExist()
             await buy.batal()
+            await driver.pause(2000)
             const check = await buy.checkcancel()
             expect(check).to.equal(true)
         })
 
-        it('Logout from Tix.id',async() => {
+        it('Logout dari aplikasi Tix.id',async() => {
             await driver.back()
             await driver.pause(2000)
             if (await driver.$('id=id.tix.android:id/com_braze_inappmessage_modal_imageview').isExisting() == true){

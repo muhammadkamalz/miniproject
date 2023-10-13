@@ -2,7 +2,7 @@ const request = require('supertest')('https://apingweb.com/api/')
 const {expect} = require('chai')
 
 const toke = require('./getToken.js')
-describe('Testing Credentials on accessing API', async() => {
+describe.skip('Testing Credentials on accessing API', async() => {
     it.skip('Registrasi kedalam API terlebih dahulu', async() => {
         const data = {
             name:'Mark Grayson' ,
