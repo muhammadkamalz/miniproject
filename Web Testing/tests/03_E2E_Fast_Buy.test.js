@@ -78,7 +78,6 @@ describe('E2E Test to fast buy something ', async() =>{
         await driver.sleep(1000)
         const check = await login.check2()
         expect(check).to.equal('Login Dengan Email')
-        // benerin assertion
     })
 })  
 

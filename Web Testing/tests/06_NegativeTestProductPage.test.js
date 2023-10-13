@@ -34,7 +34,6 @@ describe('Negative Test Halaman Produk',async() => {
         await topup.add()
         const check = await driver.wait(until.elementLocated(By.xpath('//div[contains(@class, "flex leading-5")]/span')),10000).getText()
         expect(check).to.equal('Yuk login terlebih dahulu.')
-        //benerin assertion
     })
 
     it('Tidak bisa menambahkan ke cart tanpa memasukkan data', async() => {

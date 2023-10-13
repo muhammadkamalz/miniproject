@@ -35,7 +35,6 @@ describe('Buy Akun end 2 end testing', async() =>{
         await login.open()
         const check = await login.check1()
         expect(check).to.exist.and.to.equal('kemal')
-        //benerin validasinya
     })
 
     it('Select an account to buy & put into cart', async() => {
