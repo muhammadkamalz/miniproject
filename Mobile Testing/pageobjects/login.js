@@ -20,7 +20,7 @@ class login {
     get tombolkeluar() {return driver.$('//*[@text="Keluar"]')}
     get acceptkeluar() {return driver.$('id=android:id/button1')}
     get tombolok() {return driver.$('id=id.tix.android:id/btn_ok')}
-    //logout test
+    //logout tests
 
 
     async closerrmsg() {
