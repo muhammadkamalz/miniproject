@@ -29,7 +29,7 @@ describe('Menguji Fungsi logout tix.id', async() => {
         await driver.deleteSession()
     })
 
-    it('Berhasil Login',async() => {
+    it('Dapat melakukuan Login',async() => {
        await login.input('85669387656','testing12345')
        await driver.pause(1000)
        await login.submitinput()
@@ -43,7 +43,7 @@ describe('Menguji Fungsi logout tix.id', async() => {
        expect(check).to.exist.and.to.equal('+62 85669387656')
     })
 
-    it('Berhasil Logout', async() => {
+    it('Dapat melakukan Logout', async() => {
         await login.opensetting()
         await driver.pause(2000)
         await driver.$('//*[@text="Akun"]').waitForExist({timeout: 10000})

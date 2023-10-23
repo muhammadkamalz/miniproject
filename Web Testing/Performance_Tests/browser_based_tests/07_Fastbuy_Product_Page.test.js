@@ -6,3 +6,5 @@ export default async (page) => {
     page.screenshot({path :'screenshots/07_Fastbuy_Product_Page.png'})
     sleep(3)
 }
+
+//instant buy page

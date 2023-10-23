@@ -8,7 +8,7 @@ class sort extends halaman{
     populer = By.xpath('//div[contains(@class, "space-x-4 flex")]//div[contains(@class, "cursor-pointer")][3]')
     terlaris = By.xpath('//div[contains(@class, "space-x-4 flex")]//div[contains(@class, "cursor-pointer")][5]')
     termahal = By.xpath('//div[contains(@class, "space-x-4 flex")]//div[contains(@class, "cursor-pointer")][7]')
-    //tipe sort
+    //tipe sorts
 
     tenminute = By.xpath('//div[@class="px-4"]/div[@class="py-2"][3]//div[contains(@id, "radio")]')
     tampil = By.xpath('//div[contains(@class, "p-4 flex")]/button')

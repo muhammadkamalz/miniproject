@@ -6,3 +6,5 @@ export default async (page) => {
     page.screenshot({path :'screenshots/06_Produk_Akun_Page.png'})
     sleep(3)
 }
+
+//available game to buy account

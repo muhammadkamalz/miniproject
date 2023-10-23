@@ -90,7 +90,7 @@ describe('Positive Test for buying ticket', async() => {
         expect(check).to.equal(true)
     })
 
-    it('Dapat melanjutkan checkout untuk beli tiket', async() => {
+    it('Dapat melanjutkan checkout pembelian tiket', async() => {
        await buy.buyticket()
        await driver.$('id.tix.android:id/rl_container_top').waitForExist()
        await driver.touchAction([

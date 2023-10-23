@@ -17,7 +17,7 @@ class mainpage extends halaman {
     checkiflogin = By.xpath('//button[@class="flex"]/div/p')
     emailerr = By.xpath('//form/div[1]/div/p[2]')
     passworderr = By.xpath('//form/div[2]/div/p[2]')
-    //checker
+    //checkers
 
     //profile
     profil = By.xpath('//div[contains(@class, "flex items-center justify-between pt-3")]/div[4]/button')

@@ -63,3 +63,5 @@ export function protocolBasedTest()
     topup_page()
 
 }
+
+//modularized

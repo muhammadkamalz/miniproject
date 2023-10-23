@@ -6,7 +6,7 @@ class halaman {
     }
 
     async buka(path = '/') {
-        this.driver.get('https://itemku.com' + path)
+        this.driver.get('https://itemku.com' + path) //to open itemku.com
     }
 
 

@@ -120,7 +120,7 @@ describe('Testing End to End', async() => {
             expect(check).to.equal(true)
         })
 
-        it('Logout dari aplikasi Tix.id',async() => {
+        it('Logout dari aplikasi',async() => {
             await driver.back()
             await driver.pause(2000)
             if (await driver.$('id=id.tix.android:id/com_braze_inappmessage_modal_imageview').isExisting() == true){

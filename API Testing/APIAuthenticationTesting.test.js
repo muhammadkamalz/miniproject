@@ -81,7 +81,7 @@ describe.skip('Authentication Testing', async() => {
 
     it.skip('Should be able to authenticate and update an user data', async() => {
         const newdata = {
-            name : 'May',
+            name : 'Mayfield',
             age : '19',
             email :'mayfield@gmail.com',
             image : 'https://example.com/batman.png'

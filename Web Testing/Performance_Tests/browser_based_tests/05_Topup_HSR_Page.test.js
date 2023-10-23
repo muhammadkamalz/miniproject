@@ -6,3 +6,5 @@ export default async (page) => {
     page.screenshot({path :'screenshots/05_Topup_HSR_Page.png'})
     sleep(3)
 }
+
+//topup for a product page

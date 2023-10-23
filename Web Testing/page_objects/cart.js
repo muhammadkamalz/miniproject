@@ -18,7 +18,7 @@ class cart extends halaman {
     //forcheckingpurpose
 
     confirm = By.xpath('//div[@class="relative w-4/12"]//button')
-    //buttons
+    //button
 
     async open1() {
         await this.driver.findElement(this.troli).click()

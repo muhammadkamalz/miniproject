@@ -111,7 +111,7 @@ describe('Negative Testing untuk search bar', async() => {
         expect(check).to.exist.and.to.include('tidak ada hasil pencarian')
     })
 
-    it('Terjadi error saat menginput kalimat & simbol asal di kolom search tokoh', async() => {
+    it('Terjadi error saat menginput kalimat & simbol asal di kolom search actor', async() => {
         await search.kosong()
         await search.clickbar()
         await driver.$('id=id.tix.android:id/cl_input').waitForExist()

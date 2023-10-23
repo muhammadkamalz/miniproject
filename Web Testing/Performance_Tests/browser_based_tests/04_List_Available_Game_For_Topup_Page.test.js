@@ -6,3 +6,4 @@ export default async (page) => {
     page.screenshot({path :'screenshots/04_List_Available_Game_For_Topup_Page.png'})
     sleep(3)
 }
+//topup page

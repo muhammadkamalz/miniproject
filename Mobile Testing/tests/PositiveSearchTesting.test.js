@@ -99,7 +99,7 @@ describe.only('Positive Testing untuk search bar', async() => {
         expect(check).to.include('Robert Downey')
     })
 
-    it('Menampilkan History pencarian actor', async() => {
+    it('Menampilkan History dalam pencarian actor', async() => {
         await search.kosong()
         await driver.execute('mobile: performEditorAction', { action: 'search' })
         await driver.$('id=id.tix.android:id/tv_title_search').waitForExist()
@@ -107,7 +107,7 @@ describe.only('Positive Testing untuk search bar', async() => {
         expect(check).to.equal('Robert Downey Jr')
     })
 
-    it('Menampilkan History kedua pencarian actor', async() => {
+    it('Menampilkan History kedua dalam pencarian actor', async() => {
         await search.tokoh()
         await search.inputsearch('Masahiro Inoue')
         await driver.execute('mobile: performEditorAction', { action: 'search' })

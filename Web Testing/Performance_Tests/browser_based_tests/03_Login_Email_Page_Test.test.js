@@ -9,3 +9,6 @@ export default async (page) => {
     page.screenshot({path :'screenshots/03_Login_Email_page.png'})
     sleep(3)
 }
+
+
+//login with email

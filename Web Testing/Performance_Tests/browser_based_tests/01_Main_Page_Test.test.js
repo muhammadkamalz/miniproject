@@ -6,3 +6,5 @@ export default async (page) => {
     page.screenshot({path :'screenshots/01_Main_page.png'})
     sleep(3)
 }
+
+//mainpage

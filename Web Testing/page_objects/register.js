@@ -13,6 +13,8 @@ class register extends halaman {
     cekemail = By.xpath('//a[contains(text(), "Verifikasi email")]')
     cekregister = By.xpath('//p[@class="mb-14"]/div')
 
+    //checkers
+
     errmsgmail = By.xpath('//div[@class="mt-6 pb-2"][1]/div/p[2]')
     errmsgpw = By.xpath('//div[@class="mt-6 pb-2"][2]/div/p[2]')
 

@@ -17,7 +17,7 @@ class checkout extends halaman {
     checkmetode = By.xpath('//p[contains(text(), "DANA Linkage")]')
     checkkembali = By.xpath('//div[contains(@data-test,"promo-carousel")]')
     checktombolbayar = By.xpath('//button//span[contains(text(), "Bayar")]')
-    //checking purpose
+    //checking purposes
 
     logoitemku = By.xpath('//img[contains(@alt, "logo-itemku")]')
     //kembali kehalaman utama

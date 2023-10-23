@@ -29,7 +29,7 @@ class topup extends halaman {
 
     checkitem = By.xpath('//div[@class="w-full space-y-4"]/div/div/div/h1')
     checkifadded = By.xpath('//div[contains(@class, "flex flex-col justify-center")]/div//span')
-    //for checking
+    //for checking purposes
     
 
     async open () {

@@ -59,7 +59,7 @@ describe('Negative Test for buying ticket', async() => {
 
     })
 
-    it('Tidak dapat membeli tiket di waktu yang telah / lewat', async()=> {
+    it('Tidak dapat membeli tiket di waktu yang telah lewat', async()=> {
         await login.input('85669387656','testing12345')
         await driver.pause(1000)
         await login.submitinput()

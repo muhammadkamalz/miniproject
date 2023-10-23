@@ -88,7 +88,7 @@ describe.skip('Testing Credentials on accessing API', async() => {
     it.skip('Dapat menginput data',async() => {
         const data = {
             title : 'Harry Potter',
-            body : 'Fushiguro is a normal highschooler who got dragged into the world of jujutsu because he eats the finger of the king of curses ryomen sukuna',
+            body : 'Harr is a normal highschooler who got dragged into the world of jujutsu because he eats the finger of the king of curses ryomen sukuna',
             picture : 'https://example.com/itadori.png'
         }
         const res = await request

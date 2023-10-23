@@ -56,7 +56,7 @@ describe('Negative Test for Login Process', async() => {
     it('Tidak dapat login apabila Nomor Handphone salah', async() => {
         await login.closerrmsg()
         await driver.pause(1000)
-        await login.input('82210008558', 'testing12345')
+        await login.input('82210008553', 'testing12345')
         await login.submitinput()
         await driver.$('id=id.tix.android:id/tv_message').waitForExist({timeout : 10000})
         const check = await login.err()
