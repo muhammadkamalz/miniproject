@@ -1,5 +1,12 @@
 const halaman = require('./halaman')
 const{By} = require('selenium-webdriver')
+const {writeFileSync, readFileSync } = require('fs')
+
+const result = 'screenshots1/hasil/login.png'
+const expected = 'screenshots1/expect/login.png'
+const resultlogout = 'screenshots1/hasil/logout.png'
+const expectedlogout = 'screenshots1/expect/logout.png'
+
 class mainpage extends halaman {
     constructor(driver) {
         super(driver)
@@ -21,6 +28,7 @@ class mainpage extends halaman {
 
     //profile
     profil = By.xpath('//div[contains(@class, "flex items-center justify-between pt-3")]/div[4]/button')
+    profilname = By.xpath('//div[contains(@class,"flex items-center")]/h2')
     ceklogout = By.xpath('//div[contains(text(), "Login dengan Email")]')
     bluebutton = By.id('check-icon')
 
@@ -69,6 +77,11 @@ class mainpage extends halaman {
     async check2() {
         return await this.driver.findElement(this.ceklogout).getText()
     }
+
+    async checklogin() {
+        return await this.driver.findElement(this.profilname).getText()
+    }
+
     async errmsgmail() {
         return await this.driver.findElement(this.emailerr).getText()
     }
@@ -77,6 +90,29 @@ class mainpage extends halaman {
         return await this.driver.findElement(this.passworderr).getText()
     }
 
+    async takesschecklogin() {
+        const fotograph = await this.driver.takeScreenshot()
+        const sintesis =  Buffer.from(fotograph, 'base64')                          
+        writeFileSync(result, sintesis)                    
+        return sintesis
+    }
+
+    async takesschecklogout() {
+        const take = await this.driver.takeScreenshot()
+        const takeresult =  Buffer.from(take, 'base64')                          
+        writeFileSync(resultlogout, takeresult)                    
+        return takeresult
+    }
+
+    async checksschecklogin() {
+        const checker =  readFileSync(expected)
+        return checker
+    }
+
+    async checksschecklogout() {
+        const checker =  readFileSync(expectedlogout)
+        return checker
+    }
     //rc-imageselect-payload
 }
 
